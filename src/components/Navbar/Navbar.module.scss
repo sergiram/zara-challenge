@@ -1,0 +1,26 @@
+.navbar {
+  height: var(--navbar-height);
+  padding-inline: var(--page-padding);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-lg);
+}
+
+.count {
+  text-box: trim-both cap alphabetic;
+}

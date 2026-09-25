@@ -1,12 +1,10 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Navbar } from './Navbar/Navbar';
 
 export const Layout = () => {
   return (
     <>
-      <header>
-        <Link to="/">MBST</Link>
-        <Link to="/cart">Cart</Link>
-      </header>
+      <Navbar />
       <main>
         <Outlet />
       </main>
