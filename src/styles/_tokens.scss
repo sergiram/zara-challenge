@@ -1,0 +1,63 @@
+@use 'breakpoints' as *;
+
+:root {
+  --color-text: #000000;
+  --color-bg: #ffffff;
+  --color-text-secondary: #79736d;
+  --color-placeholder: #aaaaaa;
+  --color-border: #000000;
+  --color-border-light: #cccccc;
+  --color-button-bg: #1b1a18;
+  --color-button-text: #ffffff;
+  --color-disabled-bg: #f3f2f2;
+  --color-disabled-text: #c2bfbc;
+  --color-danger: #df0000;
+
+  --font-family: Helvetica, Arial, sans-serif;
+  --font-weight-regular: 300;
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-title: var(--font-size-xl);
+  --font-size-price: var(--font-size-md);
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  --page-padding: 16px;
+  --navbar-height: 80px;
+  --content-max-width: 1200px;
+  --card-min-width: 344px;
+
+  --button-height: 48px;
+  --option-height: 48px;
+
+  --swatch-size: 20px;
+  --swatch-outer-size: 24px;
+  --swatch-gap: 16px;
+
+  --border-width-card: 0.5px;
+  --border-width-button: 0.5px;
+  --border-width-option: 1px;
+  --border-width-selected: 1px;
+
+  --transition-duration: 0.3s;
+
+  @include tablet {
+    --page-padding: 40px;
+  }
+
+  @include desktop {
+    --page-padding: 100px;
+    --button-height: 56px;
+    --option-height: 64px;
+    --font-size-title: var(--font-size-xxl);
+    --font-size-price: var(--font-size-xl);
+  }
+}
