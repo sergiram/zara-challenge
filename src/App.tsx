@@ -1,5 +1,13 @@
-function App() {
-  return <h1>Vite + React</h1>;
-}
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
 
-export default App;
+export const App = () => {
+  return (
+    <RouterProvider
+      future={{
+        v7_startTransition: true,
+      }}
+      router={router}
+    />
+  );
+};
