@@ -1,0 +1,60 @@
+.similar {
+  margin-top: var(--detail-section-gap);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  margin-top: var(--space-xl);
+  // Runs past the 1200px content up to the right edge of the window, as in the Figma.
+  // 100cqw is the width of <main> (see Layout.module.scss) and 100% the width of the content
+  margin-right: calc((100% - 100cqw) / 2 - var(--page-padding));
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  // The custom bar below (.track and .thumb) replaces the native scrollbar
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// While dragging with the mouse the list follows the pointer freely; it snaps again on release
+.dragging {
+  cursor: grabbing;
+  user-select: none;
+  scroll-snap-type: none;
+
+  * {
+    cursor: inherit;
+  }
+}
+
+.item {
+  flex: 0 0 var(--similar-card-width);
+  // Overlaps the next card's border so adjacent cards share a single line. Only sideways: a
+  // negative bottom margin would push the bottom border out of the scroll area and clip it
+  margin-right: calc(-1 * var(--border-width-card));
+  scroll-snap-align: start;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.track {
+  position: relative;
+  height: 1px;
+  margin-top: var(--space-xl);
+  background-color: var(--color-border-light);
+}
+
+.thumb {
+  position: absolute;
+  inset-block: 0;
+  background-color: var(--color-text);
+}

@@ -2,3 +2,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-width), 100%), 1fr));
 }
+
+// Overlaps the neighbours' borders so adjacent cards share a single line, across and down
+.item {
+  margin: 0 calc(-1 * var(--border-width-card)) calc(-1 * var(--border-width-card)) 0;
+}

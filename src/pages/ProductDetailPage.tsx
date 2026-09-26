@@ -4,6 +4,7 @@ import { ProductDetailView } from '../components/ProductDetailView/ProductDetail
 import { useDelayedFlag } from '../hooks/useDelayedFlag';
 import { ApiRequestError } from '../services/apiClient';
 import { LoadingBar } from '../components/LoadingBar/LoadingBar';
+import { ChevronLeftIcon } from '../components/icons/ChevronLeftIcon';
 import styles from './ProductDetailPage.module.scss';
 
 export const ProductDetailPage = () => {
@@ -16,6 +17,10 @@ export const ProductDetailPage = () => {
   return (
     <>
       {showLoadingBar && <LoadingBar label="Cargando producto" />}
+      <Link to="/" className={styles.back}>
+        <ChevronLeftIcon />
+        Back
+      </Link>
       {error ? (
         <div role="alert" className={styles.message}>
           <p>
@@ -23,7 +28,6 @@ export const ProductDetailPage = () => {
               ? 'Producto no encontrado.'
               : 'No se ha podido cargar el producto. Inténtalo de nuevo más tarde.'}
           </p>
-          <Link to="/">Volver al listado</Link>
         </div>
       ) : (
         product && (

@@ -48,6 +48,9 @@
   --detail-image-width: 220px;
   --detail-info-width: 380px;
   --specs-label-width: 162px;
+  --similar-card-width: 344px;
+  // Space between the detail sections (hero, specifications, similar items) and after the last one
+  --detail-section-gap: 80px;
 
   --swatch-size: 20px;
   --swatch-outer-size: 24px;
@@ -76,6 +79,7 @@
     --option-height: 64px;
     --option-min-width: 95px;
     --detail-image-width: 510px;
+    --detail-section-gap: 152px;
     --font-size-title: var(--font-size-xxl);
     --font-size-price: var(--font-size-xl);
   }

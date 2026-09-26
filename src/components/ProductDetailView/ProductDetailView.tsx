@@ -7,6 +7,7 @@ import { trimImage } from '../../utils/trimImage';
 import { useCart } from '../../context/cart/useCart';
 import { useTrimmedImage } from '../../hooks/useTrimmedImage';
 import { SpecsTable } from '../SpecsTable/SpecsTable';
+import { SimilarProducts } from '../SimilarProducts/SimilarProducts';
 import styles from './ProductDetailView.module.scss';
 
 interface ProductDetailViewProps {
@@ -14,7 +15,7 @@ interface ProductDetailViewProps {
 }
 
 export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
-  const { id, brand, name, basePrice, colorOptions, storageOptions } = product;
+  const { id, brand, name, basePrice, colorOptions, storageOptions, similarProducts } = product;
   const { addItem } = useCart();
   const navigate = useNavigate();
 
@@ -31,7 +32,6 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
   const minPrice = minimumPrice(storageOptions, basePrice);
   const trimmedImageUrl = useTrimmedImage(displayedColor.imageUrl);
 
-  // Crops every colour up front so switching colours doesn't wait for the download
   useEffect(() => {
     colorOptions.forEach((color) => trimImage(color.imageUrl));
   }, [colorOptions]);
@@ -111,7 +111,7 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
                 </label>
               ))}
             </div>
-            {/* Always rendered so the button below doesn't jump when a color is picked */}
+
             <p className={styles.colorName}>{selectedColor?.name}</p>
           </fieldset>
           <button
@@ -125,6 +125,7 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
         </div>
       </div>
       <SpecsTable product={product} />
+      <SimilarProducts products={similarProducts} />
     </article>
   );
 };

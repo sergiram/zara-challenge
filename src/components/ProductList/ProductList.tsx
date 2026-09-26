@@ -10,7 +10,7 @@ export const ProductList = ({ products }: ProductListProps) => {
   return (
     <ul role="list" className={styles.grid}>
       {products.map((product) => (
-        <li key={product.id}>
+        <li key={product.id} className={styles.item}>
           <ProductCard product={product} />
         </li>
       ))}

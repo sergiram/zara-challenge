@@ -1,4 +1,6 @@
 .main {
   position: relative;
   padding-inline: var(--page-padding);
+  // Lets children measure <main> with cqw units (the similar items carousel reaches its edge)
+  container-type: inline-size;
 }
