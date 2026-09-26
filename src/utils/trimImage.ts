@@ -79,11 +79,15 @@ function getContentBounds(image: HTMLImageElement): Bounds | null {
   const right = Math.min(width, maxX + 2);
   const bottom = Math.min(height, maxY + 2);
 
+  // Whole pixels, so the copy is 1:1: a fractional crop makes the browser resample and blur it
+  const x = Math.floor(left / scale);
+  const y = Math.floor(top / scale);
+
   return {
-    x: left / scale,
-    y: top / scale,
-    width: (right - left) / scale,
-    height: (bottom - top) / scale,
+    x,
+    y,
+    width: Math.min(naturalWidth, Math.ceil(right / scale)) - x,
+    height: Math.min(naturalHeight, Math.ceil(bottom / scale)) - y,
   };
 }
 
@@ -93,8 +97,8 @@ async function trim(src: string): Promise<string> {
   if (!bounds) return src;
 
   const canvas = document.createElement('canvas');
-  canvas.width = Math.round(bounds.width);
-  canvas.height = Math.round(bounds.height);
+  canvas.width = bounds.width;
+  canvas.height = bounds.height;
   const context = canvas.getContext('2d');
   if (!context) return src;
 
@@ -106,8 +110,8 @@ async function trim(src: string): Promise<string> {
     bounds.height,
     0,
     0,
-    canvas.width,
-    canvas.height,
+    bounds.width,
+    bounds.height,
   );
 
   const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve));

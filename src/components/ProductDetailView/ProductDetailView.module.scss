@@ -1,0 +1,182 @@
+@use '../../styles/breakpoints' as *;
+
+.detail {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-bottom: var(--space-xxxl);
+}
+
+// Image and purchase info: one column on mobile, side by side and vertically centred from tablet up
+.hero {
+  display: grid;
+  gap: var(--space-xl);
+  padding-block: var(--space-md) calc(var(--space-xl) * 2);
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    padding-block: var(--space-xxl) calc(var(--space-xl) * 2);
+  }
+
+  @include desktop {
+    grid-template-columns: minmax(0, 1fr) var(--detail-info-width);
+    padding-block: calc(var(--space-xxxl) * 2) calc(var(--space-xxxl) * 2 + var(--space-lg));
+  }
+}
+
+// In the Figma the Galaxy S24 Ultra takes 463px of the 630px frame, so every phone is drawn at
+// that share of the height. A few API images (S24 Ultra, S23 FE, iPhone 15 Pro Max) are smaller
+// than that, so the browser scales them up slightly
+$phone-height: 73.5%;
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--detail-image-width);
+  aspect-ratio: 510 / 630;
+}
+
+.image {
+  width: 100%;
+  height: $phone-height;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.brand {
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: var(--font-size-title);
+  text-transform: uppercase;
+}
+
+.price {
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-price);
+}
+
+.legend {
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
+}
+
+.storage {
+  margin-top: var(--space-xl);
+
+  @include desktop {
+    margin-top: var(--space-xxxl);
+  }
+}
+
+.storageOptions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+
+.storageOption {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--option-min-width);
+  height: var(--option-height);
+  padding-inline: var(--space-lg);
+  // Overlaps the neighbour's border so adjacent options share a single line
+  margin-right: calc(-1 * var(--border-width-option));
+  border: var(--border-width-option) solid var(--color-border-light);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: border-color var(--transition-duration) var(--transition-easing);
+
+  &:has(:checked) {
+    // Above its neighbours so the whole black border shows, including the shared sides
+    z-index: 1;
+    border-color: var(--color-border);
+  }
+
+  &:has(:focus-visible) {
+    z-index: 2;
+    outline: 1px solid var(--color-border);
+    outline-offset: 2px;
+  }
+}
+
+.colors {
+  margin-top: var(--space-lg);
+
+  @include desktop {
+    margin-top: var(--space-xl);
+  }
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--swatch-gap);
+  margin-top: var(--space-md);
+}
+
+// 1px white gap between the colour and the border: 20 + 2 * (1 + 1) = 24
+.swatch {
+  position: relative;
+  display: block;
+  width: var(--swatch-outer-size);
+  height: var(--swatch-outer-size);
+  padding: calc((var(--swatch-outer-size) - var(--swatch-size)) / 2 - var(--border-width-option));
+  border: var(--border-width-option) solid var(--color-border-light);
+  cursor: pointer;
+  transition: border-color var(--transition-duration) var(--transition-easing);
+
+  &:has(:checked) {
+    border-color: var(--color-border);
+  }
+
+  &:has(:focus-visible) {
+    outline: 1px solid var(--color-border);
+    outline-offset: 2px;
+  }
+}
+
+.swatchColor {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.colorName {
+  // Keeps the line's height when empty
+  min-height: 1lh;
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-md);
+}
+
+.addButton {
+  width: 100%;
+  height: var(--button-height);
+  margin-top: var(--space-xl);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  text-transform: uppercase;
+  transition:
+    background-color var(--transition-duration) var(--transition-easing),
+    color var(--transition-duration) var(--transition-easing);
+
+  &:disabled {
+    background-color: var(--color-disabled-bg);
+    color: var(--color-disabled-text);
+    cursor: not-allowed;
+  }
+
+  @include tablet {
+    width: var(--button-width);
+  }
+
+  @include desktop {
+    width: 100%;
+  }
+}

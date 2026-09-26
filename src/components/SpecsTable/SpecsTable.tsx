@@ -1,4 +1,5 @@
 import type { ProductDetail } from '../../types/product';
+import styles from './SpecsTable.module.scss';
 
 interface SpecsTableProps {
   product: ProductDetail;
@@ -23,11 +24,11 @@ export const SpecsTable = ({ product }: SpecsTableProps) => {
 
   return (
     <section>
-      <h2>SPECIFICATIONS</h2>
-      <dl>
+      <h2 className={styles.title}>Specifications</h2>
+      <dl className={styles.list}>
         {rows.map(({ label, value }) => (
-          <div key={label}>
-            <dt>{label}</dt>
+          <div key={label} className={styles.row}>
+            <dt className={styles.label}>{label}</dt>
             <dd>{value}</dd>
           </div>
         ))}

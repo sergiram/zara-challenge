@@ -42,6 +42,12 @@
   // Width of the outlined buttons from tablet up (CONTINUE SHOPPING in Figma)
   --button-width: 260px;
   --option-height: 48px;
+  --option-min-width: 88px;
+
+  // Width of the detail image frame (510×630 in the Figma) and of the info column beside it
+  --detail-image-width: 220px;
+  --detail-info-width: 380px;
+  --specs-label-width: 162px;
 
   --swatch-size: 20px;
   --swatch-outer-size: 24px;
@@ -50,6 +56,7 @@
   --border-width-card: 0.5px;
   --border-width-button: 0.5px;
   --border-width-input: 0.5px;
+  --border-width-divider: 0.5px;
   --border-width-option: 1px;
   --border-width-selected: 1px;
 
@@ -59,12 +66,16 @@
 
   @include tablet {
     --page-padding: 40px;
+    --detail-image-width: 335px;
+    --specs-label-width: 348px;
   }
 
   @include desktop {
     --page-padding: 100px;
     --button-height: 56px;
     --option-height: 64px;
+    --option-min-width: 95px;
+    --detail-image-width: 510px;
     --font-size-title: var(--font-size-xxl);
     --font-size-price: var(--font-size-xl);
   }
