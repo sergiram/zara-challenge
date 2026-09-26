@@ -1,0 +1,17 @@
+.content {
+  animation: fade-in var(--transition-duration) var(--transition-easing);
+}
+
+.message {
+  padding-block: var(--space-xl);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

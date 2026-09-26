@@ -21,7 +21,7 @@ export const ProductListPage = () => {
   return (
     <div className={styles.page}>
       <h1 className="visually-hidden">Smartphones</h1>
-      {isLoading && <LoadingBar />}
+      {isLoading && <LoadingBar label="Cargando productos" />}
       <SearchBar
         value={search}
         onChange={handleSearchChange}

@@ -1,0 +1,40 @@
+@use '../styles/breakpoints' as *;
+
+.page {
+  padding-block: var(--space-lg) var(--space-xl);
+  text-transform: uppercase;
+
+  @include tablet {
+    padding-top: var(--space-xxl);
+  }
+}
+
+.title {
+  font-size: var(--font-size-title);
+}
+
+.text {
+  margin-top: var(--space-md);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--button-height);
+  margin-top: var(--space-xl);
+  border: var(--border-width-button) solid var(--color-button-bg);
+  transition:
+    background-color var(--transition-duration) var(--transition-easing),
+    color var(--transition-duration) var(--transition-easing);
+
+  &:hover {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+  }
+
+  @include tablet {
+    width: var(--button-width);
+  }
+}
