@@ -1,0 +1,4 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-width), 100%), 1fr));
+}

@@ -26,6 +26,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'jsx-a11y/no-redundant-roles': ['error', { ul: ['list'] }],
     },
   },
   // Must be last: turns off the rules that conflict with Prettier

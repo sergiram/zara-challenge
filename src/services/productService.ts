@@ -4,6 +4,7 @@ import { uniqueById } from '../utils/uniqueById';
 import { apiFetch } from './apiClient';
 
 const PRODUCTS_LIMIT = 20;
+// The API repeats some ids, so we ask for a few extra to still show 20 unique products
 const LIMIT_BUFFER = 5;
 
 interface GetProductsOptions {

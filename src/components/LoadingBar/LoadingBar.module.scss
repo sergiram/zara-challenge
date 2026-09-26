@@ -1,0 +1,27 @@
+.bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-text);
+    transform-origin: left;
+    animation: loading 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}

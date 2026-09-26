@@ -1,21 +1,39 @@
-import { useState } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
 import { useProducts } from '../hooks/useProducts';
+import { useSearchParams } from 'react-router-dom';
+import { LoadingBar } from '../components/LoadingBar/LoadingBar';
+import { SearchBar } from '../components/SearchBar/SearchBar';
+import { ProductList } from '../components/ProductList/ProductList';
+import styles from './ProductListPage.module.scss';
 
 export const ProductListPage = () => {
-  const [search, setSearch] = useState('');
-  const debouncedSearch = useDebounce(search);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search') ?? '';
+  const debouncedSearch = useDebounce(search.trim());
   const { products, isLoading, error } = useProducts(debouncedSearch);
 
+  const handleSearchChange = (value: string) => {
+    setSearchParams(value ? { search: value } : {}, { replace: true });
+  };
+
+  const firstLoad = isLoading && products.length === 0;
+
   return (
-    <div>
-      <input
-        aria-label="Buscar"
+    <div className={styles.page}>
+      <h1 className="visually-hidden">Smartphones</h1>
+      {isLoading && <LoadingBar />}
+      <SearchBar
         value={search}
-        onChange={(event) => setSearch(event.target.value)}
+        onChange={handleSearchChange}
+        resultsCount={firstLoad || error ? null : products.length}
       />
-      <p>{isLoading ? 'Cargando…' : `${products.length} resultados`}</p>
-      {error && <p>Error: {error.message}</p>}
+      <div className={styles.content}>
+        {error ? (
+          <p role="alert">No se han podido cargar los productos. Inténtalo de nuevo más tarde.</p>
+        ) : (
+          <ProductList products={products} />
+        )}
+      </div>
     </div>
   );
 };

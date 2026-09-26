@@ -1,0 +1,77 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  aspect-ratio: 1;
+  padding: var(--space-md);
+  border: var(--border-width-card) solid var(--color-border);
+  // Overlaps the neighbour's border so adjacent cards share a single line
+  margin: 0 calc(-1 * var(--border-width-card)) calc(-1 * var(--border-width-card)) 0;
+  text-transform: uppercase;
+  transition: color var(--transition-duration-slow) var(--transition-easing);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-bg);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    // The layer rises while fading from white to black, so the hover starts with a quick white flash
+    transition:
+      transform var(--transition-duration-slow) var(--transition-easing),
+      background-color var(--transition-duration) ease-in;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-bg);
+    background-color: var(--color-bg);
+
+    &::before {
+      background-color: var(--color-text);
+      transform: scaleY(1);
+    }
+
+    .brand {
+      color: inherit;
+    }
+  }
+}
+
+// Phone height within the image area, taken from the Galaxy S24 Ultra so every phone matches it
+$phone-height: 71%;
+
+.imageWrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.image {
+  width: 100%;
+  height: $phone-height;
+  object-fit: contain;
+}
+
+.brand {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-duration-slow) var(--transition-easing);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.price {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
