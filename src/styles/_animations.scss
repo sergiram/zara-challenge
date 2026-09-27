@@ -1,0 +1,7 @@
+// Brought in with @use by every CSS Module that animates. CSS Modules rename keyframes per module,
+// so a module can't reference a @keyframes declared in globals.scss
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

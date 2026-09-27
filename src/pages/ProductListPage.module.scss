@@ -1,4 +1,5 @@
 @use '../styles/breakpoints' as *;
+@use '../styles/animations';
 
 .page {
   padding-block: var(--space-lg) var(--space-xl);
@@ -14,4 +15,8 @@
   @include tablet {
     margin-top: var(--space-xxxl);
   }
+}
+
+.results {
+  animation: fade-in var(--transition-duration) var(--transition-easing);
 }

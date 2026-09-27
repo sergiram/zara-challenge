@@ -31,7 +31,13 @@ export const ProductListPage = () => {
         {error ? (
           <p role="alert">No se han podido cargar los productos. Inténtalo de nuevo más tarde.</p>
         ) : (
-          <ProductList products={products} />
+          // Mounted when the first results arrive, so they fade in instead of popping up. While
+          // searching it stays mounted with the previous results, so it doesn't fade on every key
+          !firstLoad && (
+            <div className={styles.results}>
+              <ProductList products={products} />
+            </div>
+          )
         )}
       </div>
     </div>

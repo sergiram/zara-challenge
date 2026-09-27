@@ -19,6 +19,7 @@ export const SimilarProducts = ({ products }: SimilarProductsProps) => {
   const { isDragging, dragHandlers } = useDragToScroll<HTMLUListElement>();
   const [thumb, setThumb] = useState<Thumb>({ offset: 0, size: 1 });
 
+  // Evitar bucle de renders
   const updateThumb = useCallback(() => {
     const list = listRef.current;
     if (!list) return;
