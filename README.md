@@ -2,7 +2,7 @@
 
 A web app to browse, search and buy smartphones: a product list with real-time search, a detail view to choose storage and colour, and a persistent cart. Built with React, TypeScript and Vite, following the Figma designs for mobile, tablet and desktop.
 
-<!-- TODO: add the live demo URL once deployed -->
+[Live demo](https://mbst-zara-challenge-sergio-ramon.netlify.app/)
 
 ## Contents
 
