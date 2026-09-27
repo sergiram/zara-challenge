@@ -1,6 +1,6 @@
 import type { CartState } from './cartReducer';
 
-const CART_STORAGE_KEY = 'mbst-cart-v1';
+export const CART_STORAGE_KEY = 'mbst-cart';
 
 export const loadCart = (): CartState => {
   try {
