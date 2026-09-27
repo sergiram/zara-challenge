@@ -1,0 +1,72 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/buttons' as *;
+
+// Mobile: the total on its own row on top and both buttons below, half and half. From tablet up
+// everything in one row. The HTML keeps CONTINUE before PAY, which is the tab order in both
+// layouts: only the total, which can't be focused, moves
+.footer {
+  // In the Figma the footer is a white bar of its own (1920×136): it stays at the bottom of the
+  // screen while a long cart scrolls under it, so the total and PAY are always in view
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg) var(--space-md);
+  padding-block: var(--space-lg);
+  background-color: var(--color-bg);
+
+  @include tablet {
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-xl);
+  }
+
+  @include desktop {
+    padding-bottom: calc(var(--space-xxl) + var(--space-sm));
+  }
+}
+
+.total {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  order: -1;
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
+
+  @include tablet {
+    flex-basis: auto;
+    flex-shrink: 0;
+    gap: calc(var(--space-md) * 2);
+    order: 0;
+    margin-inline: auto var(--space-xl);
+    white-space: nowrap;
+  }
+
+  @include desktop {
+    margin-right: var(--space-xxxl);
+  }
+}
+
+// flex: 1 splits the row half and half, or takes it all when the cart is empty and it's alone.
+// From tablet up they're 260px wide, but can shrink so the row still fits at 768px
+.continue {
+  @include button-outline;
+
+  flex: 1;
+
+  @include tablet {
+    flex: 0 1 var(--button-width);
+  }
+}
+
+.pay {
+  @include button-solid;
+
+  flex: 1;
+
+  @include tablet {
+    flex: 0 1 var(--button-width);
+  }
+}

@@ -49,6 +49,11 @@
   --detail-info-width: 380px;
   --specs-label-width: 162px;
   --similar-card-width: 344px;
+  // Area of the phone in each cart line
+  --cart-image-width: 160px;
+  --cart-image-height: 144px;
+  // Minimum width of a cart line when lines share a row on desktop: image (262) + gap (40) + text
+  --cart-line-min-width: 480px;
   // Space between the detail sections (hero, specifications, similar items) and after the last one
   --detail-section-gap: 80px;
 
@@ -71,6 +76,8 @@
     --page-padding: 40px;
     --detail-image-width: 335px;
     --specs-label-width: 348px;
+    --cart-image-width: 262px;
+    --cart-image-height: 240px;
   }
 
   @include desktop {

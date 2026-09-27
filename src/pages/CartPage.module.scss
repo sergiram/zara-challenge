@@ -1,0 +1,48 @@
+@use '../styles/breakpoints' as *;
+
+// Fills the screen below the navbar so the footer sits at the bottom when the cart is short,
+// as in the Figma. The bottom spacing belongs to the footer, which sticks to the screen's edge
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--navbar-height));
+  padding-top: var(--space-lg);
+
+  @include tablet {
+    padding-top: var(--space-xxl);
+  }
+
+  @include desktop {
+    padding-top: calc(var(--space-xxl) + var(--space-sm));
+  }
+}
+
+.content {
+  flex: 1;
+  padding-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-xxl);
+
+  @include tablet {
+    gap: var(--space-xl);
+    margin-top: calc(var(--space-xl) * 2);
+  }
+
+  // Own decision: the Figma only shows one line. With several, wide screens fit them in columns
+  // instead of one narrow column on the left (1 at 1024px, 2 at 1280px, 3 at 1920px)
+  @include desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--cart-line-min-width), 1fr));
+    margin-top: calc(var(--space-xxl) * 2);
+  }
+}

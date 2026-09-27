@@ -1,0 +1,36 @@
+// The two button looks of the Figma. Width and position stay with each component
+
+@mixin button-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-height);
+  text-transform: uppercase;
+  transition:
+    background-color var(--transition-duration) var(--transition-easing),
+    color var(--transition-duration) var(--transition-easing);
+}
+
+// Outlined, filled in on hover: CONTINUE SHOPPING, Back to home
+@mixin button-outline {
+  @include button-base;
+  border: var(--border-width-button) solid var(--color-button-bg);
+
+  &:hover {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+  }
+}
+
+// Solid: ADD, PAY
+@mixin button-solid {
+  @include button-base;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+
+  &:disabled {
+    background-color: var(--color-disabled-bg);
+    color: var(--color-disabled-text);
+    cursor: not-allowed;
+  }
+}

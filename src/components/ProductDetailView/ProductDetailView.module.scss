@@ -1,4 +1,5 @@
 @use '../../styles/breakpoints' as *;
+@use '../../styles/buttons' as *;
 
 .detail {
   max-width: var(--content-max-width);
@@ -156,21 +157,10 @@ $phone-height: 73.5%;
 }
 
 .addButton {
-  width: 100%;
-  height: var(--button-height);
-  margin-top: var(--space-xl);
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
-  text-transform: uppercase;
-  transition:
-    background-color var(--transition-duration) var(--transition-easing),
-    color var(--transition-duration) var(--transition-easing);
+  @include button-solid;
 
-  &:disabled {
-    background-color: var(--color-disabled-bg);
-    color: var(--color-disabled-text);
-    cursor: not-allowed;
-  }
+  width: 100%;
+  margin-top: var(--space-xl);
 
   @include tablet {
     width: var(--button-width);
