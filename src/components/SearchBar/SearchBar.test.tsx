@@ -31,13 +31,13 @@ describe('SearchBar', () => {
   it('hides the clear button when there is no text', () => {
     renderSearchBar({ value: '' });
 
-    expect(screen.queryByRole('button', { name: 'Borrar búsqueda' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Clear search' })).not.toBeInTheDocument();
   });
 
   it('clears the search and puts the focus back on the field', async () => {
     const { onChange, user } = renderSearchBar({ value: 'iphone' });
 
-    await user.click(screen.getByRole('button', { name: 'Borrar búsqueda' }));
+    await user.click(screen.getByRole('button', { name: 'Clear search' }));
 
     expect(onChange).toHaveBeenCalledWith('');
     expect(screen.getByRole('searchbox', { name: 'Search' })).toHaveFocus();

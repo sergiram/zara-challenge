@@ -13,7 +13,7 @@ export const Layout = () => {
           <Outlet />
         </div>
       </main>
-      {/* Scroll al top en nueva pagina y recupera el scroll al darle a atrás */}
+      {/* Scrolls to the top on a new page and restores the position when going back */}
       <ScrollRestoration />
     </>
   );

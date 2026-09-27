@@ -24,7 +24,7 @@ describe('ProductListPage', () => {
     renderApp('/');
 
     await waitForElementToBeRemoved(() =>
-      screen.queryByRole('progressbar', { name: 'Cargando productos' }),
+      screen.queryByRole('progressbar', { name: 'Loading products' }),
     );
     expect(screen.getByRole('link', { name: /iphone 15/i })).toBeInTheDocument();
   });
@@ -76,9 +76,7 @@ describe('ProductListPage', () => {
 
     renderApp('/');
 
-    expect(await screen.findByRole('alert')).toHaveTextContent(
-      'No se han podido cargar los productos',
-    );
+    expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load the products");
   });
 
   it('has no accessibility problems', async () => {

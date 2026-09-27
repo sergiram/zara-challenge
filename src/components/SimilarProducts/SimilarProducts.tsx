@@ -8,7 +8,7 @@ interface SimilarProductsProps {
   products: ProductSummary[];
 }
 
-// Posicion y tamaño del puntero scroll
+// Position and size of the scrollbar thumb, as fractions of the list's width
 interface Thumb {
   offset: number;
   size: number;
@@ -19,7 +19,7 @@ export const SimilarProducts = ({ products }: SimilarProductsProps) => {
   const { isDragging, dragHandlers } = useDragToScroll<HTMLUListElement>();
   const [thumb, setThumb] = useState<Thumb>({ offset: 0, size: 1 });
 
-  // Evitar bucle de renders
+  // Stable reference: the effect below depends on it, so a new function on every render would loop
   const updateThumb = useCallback(() => {
     const list = listRef.current;
     if (!list) return;

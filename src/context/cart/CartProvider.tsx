@@ -34,6 +34,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     saveCart(items);
   }, [items]);
 
-  // Antes CartContext.Provider
+  // Since React 19 the context itself is the provider (before, CartContext.Provider)
   return <CartContext value={value}>{children}</CartContext>;
 };

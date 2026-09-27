@@ -16,7 +16,7 @@ export const ProductDetailPage = () => {
 
   return (
     <>
-      {showLoadingBar && <LoadingBar label="Cargando producto" />}
+      {showLoadingBar && <LoadingBar label="Loading product" />}
       <Link to="/" className={styles.back}>
         <ChevronLeftIcon />
         Back
@@ -25,8 +25,8 @@ export const ProductDetailPage = () => {
         <div role="alert" className={styles.message}>
           <p>
             {isNotFound
-              ? 'Producto no encontrado.'
-              : 'No se ha podido cargar el producto. Inténtalo de nuevo más tarde.'}
+              ? 'Product not found.'
+              : "Couldn't load the product. Please try again later."}
           </p>
         </div>
       ) : (

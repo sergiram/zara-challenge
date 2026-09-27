@@ -40,7 +40,7 @@ describe('ProductDetailPage', () => {
 
     renderApp('/product/MISSING');
 
-    expect(await screen.findByRole('alert')).toHaveTextContent('Producto no encontrado.');
+    expect(await screen.findByRole('alert')).toHaveTextContent('Product not found.');
   });
 
   it('shows a general error when the product cannot be loaded', async () => {
@@ -48,9 +48,7 @@ describe('ProductDetailPage', () => {
 
     renderApp('/product/APL-IP15');
 
-    expect(await screen.findByRole('alert')).toHaveTextContent(
-      'No se ha podido cargar el producto',
-    );
+    expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load the product");
   });
 
   // Each product starts from scratch: a storage chosen for the iPhone must not carry over to the

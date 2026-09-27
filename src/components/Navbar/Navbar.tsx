@@ -9,12 +9,12 @@ export const Navbar = () => {
   const isCartPage = pathname === '/cart';
 
   const { count: cartCount } = useCart();
-  const cartLabel = `Carrito, ${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}`;
+  const cartLabel = `Cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`;
 
   return (
     <header className={styles.navbar}>
-      <nav className={styles.nav} aria-label="Principal">
-        <Link to="/" className={styles.logo} aria-label="MBST, inicio">
+      <nav className={styles.nav} aria-label="Main">
+        <Link to="/" className={styles.logo} aria-label="MBST, home">
           <Logo />
         </Link>
         {!isCartPage && (

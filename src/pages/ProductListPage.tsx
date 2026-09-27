@@ -21,7 +21,7 @@ export const ProductListPage = () => {
   return (
     <div className={styles.page}>
       <h1 className="visually-hidden">Smartphones</h1>
-      {isLoading && <LoadingBar label="Cargando productos" />}
+      {isLoading && <LoadingBar label="Loading products" />}
       <SearchBar
         value={search}
         onChange={handleSearchChange}
@@ -29,7 +29,7 @@ export const ProductListPage = () => {
       />
       <div className={styles.content}>
         {error ? (
-          <p role="alert">No se han podido cargar los productos. Inténtalo de nuevo más tarde.</p>
+          <p role="alert">Couldn't load the products. Please try again later.</p>
         ) : (
           // Mounted when the first results arrive, so they fade in instead of popping up. While
           // searching it stays mounted with the previous results, so it doesn't fade on every key

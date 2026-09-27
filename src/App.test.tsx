@@ -37,7 +37,7 @@ describe('App', () => {
 
     await user.click(screen.getByRole('link', { name: 'Continue Shopping' }));
     await screen.findByRole('link', { name: /iphone 15/i });
-    await user.click(screen.getByRole('link', { name: 'Carrito, 1 producto' }));
+    await user.click(screen.getByRole('link', { name: 'Cart, 1 item' }));
     await user.click(screen.getByRole('button', { name: /remove iphone 15/i }));
 
     expect(screen.getByRole('heading', { level: 1, name: 'Cart (0)' })).toBeInTheDocument();

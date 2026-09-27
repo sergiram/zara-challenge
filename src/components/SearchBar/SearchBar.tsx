@@ -37,7 +37,7 @@ export const SearchBar = ({ value, onChange, resultsCount }: SearchBarProps) => 
           <button
             type="button"
             className={styles.clear}
-            aria-label="Borrar búsqueda"
+            aria-label="Clear search"
             onClick={handleClear}
           >
             <CloseIcon />
