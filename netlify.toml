@@ -1,0 +1,13 @@
+# Netlify takes the Node version from .nvmrc (18.20.8), the one the challenge asks for.
+# VITE_API_BASE_URL and VITE_API_KEY are set in the Netlify UI: Vite embeds them at build time.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single-page app: every URL serves index.html and React Router picks the page, so opening or
+# reloading /product/:id or /cart directly doesn't give a 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
